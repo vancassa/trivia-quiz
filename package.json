@@ -14,12 +14,14 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "serve": "^11.3.2",
     "typescript": "~3.7.2"
   },
   "scripts": {
     "start": "yarn tailwind:css && react-scripts start",
     "build": "yarn tailwind:css && react-scripts build",
-    "tailwind:css": "tailwind build src/styles/tailwind.src.css -c  tailwind.js -o src/styles/tailwind.css"
+    "tailwind:css": "tailwind build src/styles/tailwind.src.css -c  tailwind.js -o src/styles/tailwind.css",
+    "now-start": "serve build/"
   },
   "eslintConfig": {
     "extends": "react-app"
