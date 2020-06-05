@@ -13,10 +13,10 @@ function ResultPage(props: IProps) {
 
   return (
     <div>
-      <div style={{ display: "flex" }}>
+      <div className="flex justify-evenly mb-10">
         <div>
-          <div>Your answer</div>
-          <ol>
+          <div className="text-2xl font-bold">Your answer</div>
+          <ol className="list-decimal ml-4">
             {answers.map((answer, idx) => (
               <li
                 key={idx}
@@ -34,18 +34,22 @@ function ResultPage(props: IProps) {
         </div>
 
         <div>
-          <div>Correct answer</div>
-          <ol>
+          <div className="text-2xl font-bold">Correct answer</div>
+          <ol className="list-decimal ml-4">
             {questions.map((qns, idx) => (
               <li key={idx}>{decodeURIComponent(qns.correct_answer)}</li>
             ))}
           </ol>
         </div>
       </div>
-      <h1>
+      <h1 className="text-4xl text-center mb-10">
         Score: {score}/{questions.length}
       </h1>
-      <button onClick={props.restart}> Try again</button>
+      <div className="flex">
+        <button className="mx-auto p-4 border rounded" onClick={props.restart}>
+          Play again
+        </button>
+      </div>
     </div>
   );
 }

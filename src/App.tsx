@@ -38,8 +38,8 @@ const qns_dummy = [
 function App() {
   const [categories, setCategories] = useState([]);
   const [questions, setQuestions] = useState<IQuestion[]>(qns_dummy);
-  const [currentQnsIndex, setCurrentQnsIndex] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
+  const [currentQnsIndex, setCurrentQnsIndex] = useState(10);
+  const [answers, setAnswers] = useState<string[]>(['a', 'Twin%20Ion%20Engine']);
   const [score, setScore] = useState(0);
 
   // On mount
