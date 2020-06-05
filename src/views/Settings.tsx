@@ -67,7 +67,7 @@ function Settings(props: ISettingsProps) {
     for (let i = 0; i < checkboxes.length; i++) {
       checkboxes[i].checked = true;
       addToCategories(checkboxes[i].value);
-      categories.push(checkboxes[i].value)
+      categories.push(checkboxes[i].value);
     }
     setSelectedCategories(categories);
   };
@@ -84,10 +84,20 @@ function Settings(props: ISettingsProps) {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <div className="text-center mb-6">
+      <div className="text-center mb-8">
         <h1 className="text-5xl">Trivia Quiz</h1>
         <p>
-          Based on{" "}
+          By{" "}
+          <a
+            href="https://github.com/vancassa/trivia-quiz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            {" "}
+            @vancassa
+          </a>{" "}
+          based on{" "}
           <a
             href="https://opentdb.com/"
             target="_blank"
@@ -100,8 +110,18 @@ function Settings(props: ISettingsProps) {
         </p>
       </div>
       <div className="section__title">Categories</div>
-      <div className="inline-block underline cursor-pointer" onClick={selectAll}>Select all</div>
-      <div className="inline-block underline cursor-pointer ml-4" onClick={unselectAll}>Unselect all</div>
+      <div
+        className="inline-block underline cursor-pointer"
+        onClick={selectAll}
+      >
+        Select all
+      </div>
+      <div
+        className="inline-block underline cursor-pointer ml-4"
+        onClick={unselectAll}
+      >
+        Unselect all
+      </div>
       <div className="flex flex-col flex-wrap h-64">
         {props.categories &&
           props.categories.map((category: ICategory, index) => (
@@ -119,7 +139,7 @@ function Settings(props: ISettingsProps) {
       </div>
       <div className="section">
         <div className="section__title">Number of question</div>
-        <input type="number" onChange={setQnsNum} placeholder="10" />
+        <input type="number" onChange={setQnsNum} placeholder="5" />
       </div>
       <div className="section">
         <div className="section__title">Difficulty</div>

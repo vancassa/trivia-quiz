@@ -56,7 +56,7 @@ function App() {
 
   const startTrivia = (data: ISettingsData) => {
     let urls: string[] = [];
-    const totalQns = data.qnsNum || 10;
+    const totalQns = data.qnsNum;
     const amount =
       data.categories.length > 0
         ? Math.ceil(totalQns / data.categories.length)
@@ -115,8 +115,10 @@ function App() {
             restart={restart}
           />
         )
-      ) : (
+      ) : categories.length > 0 ? (
         <Settings categories={categories} startTrivia={startTrivia} />
+      ) : (
+        <div className="text-center">Loading...</div>
       )}
     </div>
   );
