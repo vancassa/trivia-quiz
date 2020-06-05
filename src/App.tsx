@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import logo from "./logo.svg";
 import "./App.css";
-import './styles/tailwind.css';
+import "./styles/tailwind.css";
 
 import Settings from "./views/Settings";
 import QuestionPage from "./views/QuestionPage";
@@ -37,9 +37,9 @@ const qns_dummy = [
 
 function App() {
   const [categories, setCategories] = useState([]);
-  const [questions, setQuestions] = useState<IQuestion[]>(qns_dummy);
-  const [currentQnsIndex, setCurrentQnsIndex] = useState(10);
-  const [answers, setAnswers] = useState<string[]>(['a', 'Twin%20Ion%20Engine']);
+  const [questions, setQuestions] = useState<IQuestion[]>([]);
+  const [currentQnsIndex, setCurrentQnsIndex] = useState(0);
+  const [answers, setAnswers] = useState<string[]>([]);
   const [score, setScore] = useState(0);
 
   // On mount
@@ -56,16 +56,25 @@ function App() {
 
   const startTrivia = (data: ISettingsData) => {
     let urls: string[] = [];
-    const amount = Math.ceil(data.qnsNum / data.categories.length);
+    const amount =
+      data.categories.length > 0
+        ? Math.ceil((data.qnsNum || 10) / data.categories.length)
+        : 10;
     const difficulty = data.difficulty;
     const type = data.qnsType;
 
     // Fetch all data
-    data.categories.forEach((category) => {
+    if (data.categories.length > 0) {
+      data.categories.forEach((category) => {
+        urls.push(
+          `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}&encode=url3986`
+        );
+      });
+    } else {
       urls.push(
-        `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}&encode=url3986`
+        `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=${type}&encode=url3986`
       );
-    });
+    }
 
     let allQns: IQuestion[] = [];
     Promise.all(urls.map((url) => axios.get(url))).then((responses) => {
@@ -73,7 +82,6 @@ function App() {
         allQns = allQns.concat(res.data.results);
       });
       setQuestions(allQns);
-      console.log("allQns :>> ", JSON.stringify(allQns));
     });
   };
 

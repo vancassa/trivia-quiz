@@ -53,26 +53,28 @@ function Settings(props: ISettingsProps) {
 
   return (
     <div>
-      <div>Categories</div>
-      {props.categories &&
-        props.categories.map((category: ICategory, index) => (
-          <div key={index}>
-            <input
-              type="checkbox"
-              name="category"
-              id={category.name}
-              value={category.id}
-              onChange={toggleCategories}
-            />
-            <label htmlFor={category.name}>{category.name}</label>
-          </div>
-        ))}
-      <div>
-        <div>No of qns in each category</div>
-        <input type="number" onChange={setQnsNum} />
+      <div className="section__title">Categories</div>
+      <div className="flex flex-col flex-wrap h-64">
+        {props.categories &&
+          props.categories.map((category: ICategory, index) => (
+            <div key={index}>
+              <input
+                type="checkbox"
+                name="category"
+                id={category.name}
+                value={category.id}
+                onChange={toggleCategories}
+              />
+              <label htmlFor={category.name}>{category.name}</label>
+            </div>
+          ))}
       </div>
-      <div>
-        <div>Difficulty</div>
+      <div className="section">
+        <div className="section__title">Number of question</div>
+        <input type="number" onChange={setQnsNum} placeholder="10" />
+      </div>
+      <div className="section">
+        <div className="section__title">Difficulty</div>
         <input
           type="radio"
           name="difficulty"
@@ -107,8 +109,8 @@ function Settings(props: ISettingsProps) {
         <label htmlFor="hard">Hard</label>
       </div>
 
-      <div>
-        <div>Question type</div>
+      <div className="section">
+        <div className="section__title">Question type</div>
         <input
           type="radio"
           name="type"
@@ -135,7 +137,9 @@ function Settings(props: ISettingsProps) {
         <label htmlFor="multiple">Multiple choices</label>
       </div>
 
-      <button onClick={start}>Continue</button>
+      <button className="action-button" onClick={start}>
+        Continue
+      </button>
     </div>
   );
 }

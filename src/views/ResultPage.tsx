@@ -46,7 +46,7 @@ function ResultPage(props: IProps) {
         Score: {score}/{questions.length}
       </h1>
       <div className="flex">
-        <button className="mx-auto p-4 border rounded" onClick={props.restart}>
+        <button className="action-button" onClick={props.restart}>
           Play again
         </button>
       </div>
