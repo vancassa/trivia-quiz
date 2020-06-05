@@ -52,7 +52,10 @@ function Settings(props: ISettingsProps) {
 
   const start = () => {
     props.startTrivia({
-      categories: selectedCategories,
+      categories:
+        selectedCategories.length === props.categories.length
+          ? []
+          : selectedCategories,
       qnsNum: qnsNum,
       difficulty: selectedDifficulty,
       qnsType: selectedTypes,

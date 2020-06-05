@@ -57,23 +57,28 @@ function App() {
   const startTrivia = (data: ISettingsData) => {
     let urls: string[] = [];
     const totalQns = data.qnsNum;
-    const amount =
-      data.categories.length > 0
-        ? Math.ceil(totalQns / data.categories.length)
-        : totalQns;
     const difficulty = data.difficulty;
     const type = data.qnsType;
+    const categoriesLength = data.categories.length;
 
     // Fetch all data
-    if (data.categories.length > 0) {
-      data.categories.forEach((category) => {
+    if (categoriesLength > 0) {
+      const remainder = totalQns % categoriesLength;
+      const roundUp = Math.ceil(totalQns / categoriesLength);
+      const roundDown = Math.floor(totalQns / categoriesLength);
+      const randomizedCategories = [...data.categories];
+      randomizedCategories.sort(() => Math.random() - 0.5);
+
+      let amount;
+      randomizedCategories.forEach((category, index) => {
+        amount = index < categoriesLength - remainder ? roundDown : roundUp;
         urls.push(
           `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}&encode=url3986`
         );
       });
     } else {
       urls.push(
-        `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=${type}&encode=url3986`
+        `https://opentdb.com/api.php?amount=${totalQns}&difficulty=${difficulty}&type=${type}&encode=url3986`
       );
     }
 
