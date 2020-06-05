@@ -52,7 +52,22 @@ function Settings(props: ISettingsProps) {
   };
 
   return (
-    <div>
+    <div className="max-w-3xl mx-auto">
+      <div className="text-center mb-6">
+        <h1 className="text-5xl">Trivia Quiz</h1>
+        <p>
+          Based on{" "}
+          <a
+            href="https://opentdb.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            {" "}
+            Open Trivia Database
+          </a>{" "}
+        </p>
+      </div>
       <div className="section__title">Categories</div>
       <div className="flex flex-col flex-wrap h-64">
         {props.categories &&
@@ -137,8 +152,8 @@ function Settings(props: ISettingsProps) {
         <label htmlFor="multiple">Multiple choices</label>
       </div>
 
-      <button className="action-button" onClick={start}>
-        Continue
+      <button className="action-button px-10" onClick={start}>
+        Start
       </button>
     </div>
   );

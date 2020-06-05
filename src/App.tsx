@@ -56,10 +56,11 @@ function App() {
 
   const startTrivia = (data: ISettingsData) => {
     let urls: string[] = [];
+    const totalQns = data.qnsNum || 10;
     const amount =
       data.categories.length > 0
-        ? Math.ceil((data.qnsNum || 10) / data.categories.length)
-        : 10;
+        ? Math.ceil(totalQns / data.categories.length)
+        : totalQns;
     const difficulty = data.difficulty;
     const type = data.qnsType;
 

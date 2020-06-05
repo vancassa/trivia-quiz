@@ -12,10 +12,10 @@ function ResultPage(props: IProps) {
   const { questions, answers, score } = props;
 
   return (
-    <div>
+    <div className="max-w-3xl mx-auto">
       <div className="flex justify-evenly mb-10">
         <div>
-          <div className="text-2xl font-bold">Your answer</div>
+          <div className="text-2xl font-bold">Your answers</div>
           <ol className="list-decimal ml-4">
             {answers.map((answer, idx) => (
               <li
@@ -34,7 +34,7 @@ function ResultPage(props: IProps) {
         </div>
 
         <div>
-          <div className="text-2xl font-bold">Correct answer</div>
+          <div className="text-2xl font-bold">Correct answers</div>
           <ol className="list-decimal ml-4">
             {questions.map((qns, idx) => (
               <li key={idx}>{decodeURIComponent(qns.correct_answer)}</li>
