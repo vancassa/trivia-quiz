@@ -127,7 +127,7 @@ function Settings(props: ISettingsProps) {
       >
         Unselect all
       </div>
-      <div className="flex flex-col flex-wrap h-64">
+      <div className="flex flex-col flex-wrap lg:h-64">
         {props.categories &&
           props.categories.map((category: ICategory, index) => (
             <div key={index}>
@@ -148,66 +148,80 @@ function Settings(props: ISettingsProps) {
       </div>
       <div className="section">
         <div className="section__title">Difficulty</div>
-        <input
-          type="radio"
-          name="difficulty"
-          id="anyDifficulty"
-          value=""
-          onChange={toggleDifficulty}
-        />
-        <label htmlFor="anyDifficulty">Any difficulty</label>
-        <input
-          type="radio"
-          name="difficulty"
-          id="easy"
-          value="easy"
-          onChange={toggleDifficulty}
-        />
-        <label htmlFor="easy">Easy</label>
-        <input
-          type="radio"
-          name="difficulty"
-          id="medium"
-          value="medium"
-          onChange={toggleDifficulty}
-        />
-        <label htmlFor="medium">Medium</label>
-        <input
-          type="radio"
-          name="difficulty"
-          id="hard"
-          value="hard"
-          onChange={toggleDifficulty}
-        />
-        <label htmlFor="hard">Hard</label>
+        <div>
+          <input
+            type="radio"
+            name="difficulty"
+            id="anyDifficulty"
+            value=""
+            onChange={toggleDifficulty}
+          />
+          <label htmlFor="anyDifficulty">Any difficulty</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="difficulty"
+            id="easy"
+            value="easy"
+            onChange={toggleDifficulty}
+          />
+          <label htmlFor="easy">Easy</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="difficulty"
+            id="medium"
+            value="medium"
+            onChange={toggleDifficulty}
+          />
+          <label htmlFor="medium">Medium</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="difficulty"
+            id="hard"
+            value="hard"
+            onChange={toggleDifficulty}
+          />
+          <label htmlFor="hard">Hard</label>
+        </div>
       </div>
 
       <div className="section">
         <div className="section__title">Question type</div>
-        <input
-          type="radio"
-          name="type"
-          id="anyType"
-          value=""
-          onChange={toggleType}
-        />
-        <label htmlFor="anyType">Any type</label>
-        <input
-          type="radio"
-          name="type"
-          id="boolean"
-          value="boolean"
-          onChange={toggleType}
-        />
-        <label htmlFor="boolean">True/False</label>
-        <input
-          type="radio"
-          name="type"
-          id="multiple"
-          value="multiple"
-          onChange={toggleType}
-        />
-        <label htmlFor="multiple">Multiple choices</label>
+        <div>
+          <input
+            type="radio"
+            name="type"
+            id="anyType"
+            value=""
+            onChange={toggleType}
+          />
+          <label htmlFor="anyType">Any type</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="type"
+            id="boolean"
+            value="boolean"
+            onChange={toggleType}
+          />
+          <label htmlFor="boolean">True/False</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="type"
+            id="multiple"
+            value="multiple"
+            onChange={toggleType}
+          />
+          <label htmlFor="multiple">Multiple choices</label>
+        </div>
       </div>
 
       <button className="action-button px-10" onClick={start} disabled={disableButton}>

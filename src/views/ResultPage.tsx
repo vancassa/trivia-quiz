@@ -15,8 +15,8 @@ function ResultPage(props: IProps) {
     <div className="max-w-3xl mx-auto">
       <div className="flex justify-evenly mb-10">
         <div>
-          <div className="text-2xl font-bold">Your answers</div>
-          <ol className="list-decimal ml-4">
+          <div className="text-2xl font-bold px-2 mb-4">Your answers</div>
+          <ol className="list-decimal px-2 ml-4">
             {answers.map((answer, idx) => (
               <li
                 key={idx}
@@ -34,8 +34,8 @@ function ResultPage(props: IProps) {
         </div>
 
         <div>
-          <div className="text-2xl font-bold">Correct answers</div>
-          <ol className="list-decimal ml-4">
+          <div className="text-2xl font-bold mb-4">Correct answers</div>
+          <ol className="list-decimal px-2 ml-4">
             {questions.map((qns, idx) => (
               <li key={idx}>{decodeURIComponent(qns.correct_answer)}</li>
             ))}

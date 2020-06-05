@@ -44,3 +44,10 @@ input[type="number"] {
   font-weight: bold;
   font-size: 1.3rem;
 }
+
+.result-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: 20px 1fr;
+  
+}

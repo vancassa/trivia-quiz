@@ -20,6 +20,7 @@ function QuestionPage(props: IProps) {
       correct = true;
     }
     props.answerQuestion(answer, correct);
+    window.scrollTo(0, 0);
   };
 
   return (
