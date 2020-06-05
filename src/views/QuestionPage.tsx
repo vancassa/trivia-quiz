@@ -21,6 +21,11 @@ function QuestionPage(props: IProps) {
     }
     props.answerQuestion(answer, correct);
     window.scrollTo(0, 0);
+
+    const choices = document.querySelectorAll("button");
+    choices.forEach((choice) => {
+      choice.blur();
+    });
   };
 
   return (
@@ -31,7 +36,10 @@ function QuestionPage(props: IProps) {
         <button
           key={index}
           className="choice p-5 block w-full mb-4 border border-gray-500 rounded cursor-pointer"
-          onClick={() => answerQns(answer)}
+          onClick={(e) => {
+            e.preventDefault();
+            answerQns(answer);
+          }}
         >
           {decodeURIComponent(answer)}
         </button>

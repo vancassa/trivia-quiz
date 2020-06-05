@@ -3,6 +3,8 @@
   color: #0b0c10;
 }
 
-.choice:hover {
-  background-color: #fff;
+@media (min-width: 1024px) {
+  .choice:hover {
+    background-color: #fff;
+  }
 }
