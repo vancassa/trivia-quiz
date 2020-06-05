@@ -19,14 +19,22 @@ function Settings(props: ISettingsProps) {
     setQuestionNum(parseInt(e.target.value));
   };
 
+  const addToCategories = (category: string) => {
+    setSelectedCategories([...selectedCategories, category]);
+  };
+
+  const removeFromCategories = (category: string) => {
+    const newSelectedCategories = selectedCategories.filter(
+      (x) => x !== category
+    );
+    setSelectedCategories(newSelectedCategories);
+  };
+
   const toggleCategories = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      setSelectedCategories([...selectedCategories, e.target.value]);
+      addToCategories(e.target.value);
     } else {
-      const newSelectedCategories = selectedCategories.filter(
-        (x) => x !== e.target.value
-      );
-      setSelectedCategories(newSelectedCategories);
+      removeFromCategories(e.target.value);
     }
   };
 
@@ -51,6 +59,29 @@ function Settings(props: ISettingsProps) {
     });
   };
 
+  const selectAll = () => {
+    var checkboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll(
+      'input[type="checkbox"]'
+    );
+    let categories = [];
+    for (let i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = true;
+      addToCategories(checkboxes[i].value);
+      categories.push(checkboxes[i].value)
+    }
+    setSelectedCategories(categories);
+  };
+
+  const unselectAll = () => {
+    var checkboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll(
+      'input[type="checkbox"]'
+    );
+    for (let i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = false;
+    }
+    setSelectedCategories([]);
+  };
+
   return (
     <div className="max-w-3xl mx-auto">
       <div className="text-center mb-6">
@@ -69,6 +100,8 @@ function Settings(props: ISettingsProps) {
         </p>
       </div>
       <div className="section__title">Categories</div>
+      <div className="inline-block underline cursor-pointer" onClick={selectAll}>Select all</div>
+      <div className="inline-block underline cursor-pointer ml-4" onClick={unselectAll}>Unselect all</div>
       <div className="flex flex-col flex-wrap h-64">
         {props.categories &&
           props.categories.map((category: ICategory, index) => (
