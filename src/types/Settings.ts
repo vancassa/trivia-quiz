@@ -3,4 +3,5 @@ export interface ISettingsData {
   qnsNum: number;
   difficulty: string;
   qnsType: string;
+  hideChoices?: boolean;
 }

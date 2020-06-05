@@ -15,6 +15,7 @@ function Settings(props: ISettingsProps) {
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
   const [selectedTypes, setSelectedTypes] = useState("");
   const [disableButton, setDisableButton] = useState(false);
+  const [hideChoices, setHideChoices] = useState(false);
 
   const setQnsNum = (e: ChangeEvent<HTMLInputElement>) => {
     setQuestionNum(parseInt(e.target.value));
@@ -51,6 +52,12 @@ function Settings(props: ISettingsProps) {
     }
   };
 
+  const toggleHideChoices = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setHideChoices(e.target.value === 'true');
+    }
+  };
+
   const start = () => {
     setDisableButton(true);
     props.startTrivia({
@@ -61,6 +68,7 @@ function Settings(props: ISettingsProps) {
       qnsNum: qnsNum,
       difficulty: selectedDifficulty,
       qnsType: selectedTypes,
+      hideChoices: hideChoices
     });
   };
 
@@ -223,8 +231,35 @@ function Settings(props: ISettingsProps) {
           <label htmlFor="multiple">Multiple choices</label>
         </div>
       </div>
+      <div className="section">
+        <div>Hide choices</div>
+        <div>
+          <input
+            type="radio"
+            name="hideChoices"
+            id="yes"
+            value="true"
+            onChange={toggleHideChoices}
+          />
+          <label htmlFor="yes">Yes</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="hideChoices"
+            id="no"
+            value="false"
+            onChange={toggleHideChoices}
+          />
+          <label htmlFor="no">No</label>
+        </div>
+      </div>
 
-      <button className="action-button px-10" onClick={start} disabled={disableButton}>
+      <button
+        className="action-button px-10"
+        onClick={start}
+        disabled={disableButton}
+      >
         Start
       </button>
     </div>

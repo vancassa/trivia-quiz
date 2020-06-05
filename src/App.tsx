@@ -11,36 +11,13 @@ import ResultPage from "./views/ResultPage";
 import { ISettingsData } from "./types/Settings";
 import { IQuestion, ICategory } from "./types/Question";
 
-const qns_dummy = [
-  {
-    category: "Entertainment%3A%20Music",
-    type: "multiple",
-    difficulty: "hard",
-    question: "Where%20was%20Nicki%20Minaj%20born%3F",
-    correct_answer: "Trinidad%20and%20Tobago",
-    incorrect_answers: ["Haiti", "Saint%20Lucia", "Grenada"],
-  },
-  {
-    category: "Entertainment%3A%20Film",
-    type: "multiple",
-    difficulty: "medium",
-    question:
-      "What%20does%20TIE%20stand%20for%20in%20reference%20to%20the%20TIE%20Fighter%20in%20%22Star%20Wars%22%3F",
-    correct_answer: "Twin%20Ion%20Engine",
-    incorrect_answers: [
-      "Twin%20Iron%20Engine",
-      "Twin%20Intercepter%20Engine",
-      "Twin%20Inception%20Engine",
-    ],
-  },
-];
-
 function App() {
   const [categories, setCategories] = useState([]);
   const [questions, setQuestions] = useState<IQuestion[]>([]);
   const [currentQnsIndex, setCurrentQnsIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [score, setScore] = useState(0);
+  const [hideChoices, setHideChoices] = useState(false);
 
   // On mount
   useEffect(() => {
@@ -60,6 +37,7 @@ function App() {
     const difficulty = data.difficulty;
     const type = data.qnsType;
     const categoriesLength = data.categories.length;
+    setHideChoices(data.hideChoices as boolean);
 
     // Fetch all data
     if (categoriesLength > 0) {
@@ -111,6 +89,7 @@ function App() {
           <QuestionPage
             question={questions[currentQnsIndex]}
             answerQuestion={answerQuestion}
+            hideChoices={hideChoices}
           />
         ) : (
           <ResultPage
