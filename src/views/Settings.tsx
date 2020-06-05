@@ -14,6 +14,7 @@ function Settings(props: ISettingsProps) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
   const [selectedTypes, setSelectedTypes] = useState("");
+  const [disableButton, setDisableButton] = useState(false);
 
   const setQnsNum = (e: ChangeEvent<HTMLInputElement>) => {
     setQuestionNum(parseInt(e.target.value));
@@ -51,6 +52,7 @@ function Settings(props: ISettingsProps) {
   };
 
   const start = () => {
+    setDisableButton(true);
     props.startTrivia({
       categories:
         selectedCategories.length === props.categories.length
@@ -208,7 +210,7 @@ function Settings(props: ISettingsProps) {
         <label htmlFor="multiple">Multiple choices</label>
       </div>
 
-      <button className="action-button px-10" onClick={start}>
+      <button className="action-button px-10" onClick={start} disabled={disableButton}>
         Start
       </button>
     </div>
