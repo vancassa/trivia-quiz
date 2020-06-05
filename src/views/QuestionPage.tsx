@@ -24,7 +24,7 @@ function QuestionPage(props: IProps) {
 
   return (
     <div className="text-center max-w-3xl mx-auto">
-      <p>{decodeURIComponent(question.category)}</p>
+      <p className="font-bold">{decodeURIComponent(question.category)}</p>
       <h1 className="text-3xl mb-6">{decodeURIComponent(question.question)}</h1>
       {answers.map((answer, index) => (
         <button
