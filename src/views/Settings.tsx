@@ -54,7 +54,7 @@ function Settings(props: ISettingsProps) {
 
   const toggleHideChoices = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      setHideChoices(e.target.value === 'true');
+      setHideChoices(e.target.value === "true");
     }
   };
 
@@ -68,7 +68,7 @@ function Settings(props: ISettingsProps) {
       qnsNum: qnsNum,
       difficulty: selectedDifficulty,
       qnsType: selectedTypes,
-      hideChoices: hideChoices
+      hideChoices: hideChoices,
     });
   };
 
@@ -156,7 +156,7 @@ function Settings(props: ISettingsProps) {
       </div>
       <div className="section">
         <div className="section__title">Difficulty</div>
-        <div>
+        <div className="md:inline-block">
           <input
             type="radio"
             name="difficulty"
@@ -166,7 +166,7 @@ function Settings(props: ISettingsProps) {
           />
           <label htmlFor="anyDifficulty">Any difficulty</label>
         </div>
-        <div>
+        <div className="md:inline-block">
           <input
             type="radio"
             name="difficulty"
@@ -176,7 +176,7 @@ function Settings(props: ISettingsProps) {
           />
           <label htmlFor="easy">Easy</label>
         </div>
-        <div>
+        <div className="md:inline-block">
           <input
             type="radio"
             name="difficulty"
@@ -186,7 +186,7 @@ function Settings(props: ISettingsProps) {
           />
           <label htmlFor="medium">Medium</label>
         </div>
-        <div>
+        <div className="md:inline-block">
           <input
             type="radio"
             name="difficulty"
@@ -200,7 +200,7 @@ function Settings(props: ISettingsProps) {
 
       <div className="section">
         <div className="section__title">Question type</div>
-        <div>
+        <div className="md:inline-block">
           <input
             type="radio"
             name="type"
@@ -210,7 +210,7 @@ function Settings(props: ISettingsProps) {
           />
           <label htmlFor="anyType">Any type</label>
         </div>
-        <div>
+        <div className="md:inline-block">
           <input
             type="radio"
             name="type"
@@ -220,7 +220,7 @@ function Settings(props: ISettingsProps) {
           />
           <label htmlFor="boolean">True/False</label>
         </div>
-        <div>
+        <div className="md:inline-block">
           <input
             type="radio"
             name="type"
@@ -231,9 +231,9 @@ function Settings(props: ISettingsProps) {
           <label htmlFor="multiple">Multiple choices</label>
         </div>
       </div>
-      <div className="section">
+      {/* <div className="section">
         <div>Hide choices</div>
-        <div>
+        <div className="md:inline-block">
           <input
             type="radio"
             name="hideChoices"
@@ -243,7 +243,7 @@ function Settings(props: ISettingsProps) {
           />
           <label htmlFor="yes">Yes</label>
         </div>
-        <div>
+        <div className="md:inline-block">
           <input
             type="radio"
             name="hideChoices"
@@ -253,7 +253,7 @@ function Settings(props: ISettingsProps) {
           />
           <label htmlFor="no">No</label>
         </div>
-      </div>
+      </div> */}
 
       <button
         className="action-button px-10"
