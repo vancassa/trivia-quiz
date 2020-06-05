@@ -1,0 +1,8 @@
+.choice {
+  background-color: #c5c6c7;
+  color: #0b0c10;
+}
+
+.choice:hover {
+  background-color: #fff;
+}
