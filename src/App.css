@@ -33,6 +33,7 @@ input[type="number"] {
 .action-button:disabled {
   color: grey;
   background-color: #c2c2c2;
+  cursor: default;
 }
 
 .section {
